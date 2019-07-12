@@ -131,6 +131,15 @@ view: order_items {
     sql: ${TABLE}.created_at ;;
   }
 
+    dimension_group: created_utc {
+      #X# group_label:"Order Date"
+      type: time
+      timeframes: [time, hour, date, week, month, year, hour_of_day, day_of_week, month_num, raw, week_of_year]
+      convert_tz: no
+      sql: ${TABLE}.created_at ;;
+    }
+
+
   dimension: reporting_period {
     group_label: "Order Date"
     sql: CASE
